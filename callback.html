@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Accediendo...</title></head>
+<body>
+<script>
+  const hash = window.location.hash;
+  if (hash && hash.includes('access_token')) {
+    const params = new URLSearchParams(hash.substring(1));
+    const token = params.get('access_token');
+    if (token) {
+      // Usar hash # para pasar el token (los servidores no lo tocan)
+      window.location.href = './index.html#cevi_token=' + encodeURIComponent(token);
+    } else {
+      window.location.href = './index.html';
+    }
+  } else {
+    window.location.href = './index.html';
+  }
+</script>
+<p style="font-family:sans-serif;text-align:center;margin-top:40px;color:#888;">Iniciando sesión...</p>
+</body>
+</html>
